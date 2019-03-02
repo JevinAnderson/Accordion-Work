@@ -1,5 +1,7 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import Layout from "../components/layout";
+import { Link } from "gatsby";
 
 class Accordion extends Component {
   state = {};
@@ -18,14 +20,17 @@ class Accordion extends Component {
 
   render() {
     return (
-      <div className="accordion">
-      </div>
+      <Layout>
+        <div className="accordion">
+          <Link to="/">Go back to the homepage</Link>
+        </div>
+      </Layout>
     );
   }
 
-  static propTypes = {}
+  static propTypes = {};
 
-  static defaultProps = {}
+  static defaultProps = {};
 }
 
 export default Accordion;
