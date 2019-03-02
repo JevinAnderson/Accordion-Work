@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import Promise from "promise-polyfill";
 
 const deriveTransition = duration => `height ${duration}ms ease-out`;
 
@@ -7,7 +8,8 @@ class Collapsible extends Component {
   animating = false;
   mounted = false;
   state = {
-    height: "auto",
+    display: this.props.collapsed ? "none" : undefined,
+    height: this.props.collapsed ? "0px" : "auto",
     collapsed: this.props.collapsed,
     transition: deriveTransition(this.props.duration)
   };
@@ -177,7 +179,7 @@ class Collapsible extends Component {
   render() {
     const { style, collapsed, duration, ...rest } = this.props;
 
-    if (this.state.display === "none") return null;
+    // if (this.state.display === "none") return null;
 
     return (
       <div
@@ -191,12 +193,14 @@ class Collapsible extends Component {
   static propTypes = {
     collapsed: PropTypes.bool,
     duration: PropTypes.number,
-    style: PropTypes.object
+    style: PropTypes.object,
+    unmountOnCollapse: PropTypes.bool
   };
 
   static defaultProps = {
     duration: 300,
-    style: {}
+    style: {},
+    unmountOnCollapse: false
   };
 }
 

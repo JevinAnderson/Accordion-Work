@@ -1,38 +1,35 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import Layout from "../components/layout";
 import { Link } from "gatsby";
 import Collapsible from "../components/collapsible";
 
+let collapsed = false;
 class ReactPage extends Component {
-  state = {};
-
-  // constructor(props) {}
-  // componentWillMount(){} // will be deprecated
-  // componentDidMount(){}
-  // componentWillReceiveProps(nextProps) {} // will be deprecated
-  // static getDerivedStateFromProps(nextProps, prevState) {}
-  // shouldComponentUpdate(nextProps, nextState) { return true; }
-  // componentWillUpdate(nextProps, nextState) {} // will be deprecated
-  // getSnapshotBeforeUpdate(prevProps, prevState) {}
-  // componentDidUpdate(prevProps, prevState, snapshot) {}
-  // componentWillUnmount() {}
-  // componentDidCatch(error, info) {}
+  state = {
+    collapsed
+  };
 
   toggleCollapse = event => {
     event.preventDefault();
-    console.log("Toggle collapse!");
 
-    this.setState(prevState => ({
-      collapsed: !prevState.collapsed
-    }));
+    this.setState(
+      prevState => ({
+        collapsed: !prevState.collapsed
+      }),
+      () => {
+        collapsed = this.state.collapsed;
+      }
+    );
   };
 
   render() {
     return (
       <Layout>
         <button onClick={this.toggleCollapse}>Toggle Collapse</button>
-        <Collapsible collapsed={this.state.collapsed}>
+        <Collapsible
+          collapsed={this.state.collapsed}
+          onClick={this.toggleCollapse}
+        >
           Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vivamus
           sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras
           mattis consectetur purus sit amet fermentum. Lorem ipsum dolor sit
