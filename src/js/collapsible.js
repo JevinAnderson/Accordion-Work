@@ -13,6 +13,13 @@ const COLLAPSE_CLASS = "jevin_collapse";
 const DURATION = 300;
 const SAFETY_DELAY = 50; // We can avoid this by waiting for transition events, but support is not well documented
 function reflow(element) {
+  /**
+   * I had to look this up. This is one of bootstraps utility methods, and it's purpose is to force a redraw, which
+   * here allows for immediate transition updates of height, instead of waiting for next frame with setTimeout or
+   * requestAnimationFrame, etc...
+   * https://gist.github.com/paulirish/5d52fb081b3570c81e3a
+   * https://github.com/twbs/bootstrap/blob/master/js/src/util/index.js
+   */
   return element.offsetHeight;
 }
 
