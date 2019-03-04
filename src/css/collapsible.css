@@ -1,0 +1,10 @@
+.jevin_collapse:not(.jevin_expand) {
+  display: none;
+}
+
+.jevin_collapsing {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  transition: height 300ms ease;
+}

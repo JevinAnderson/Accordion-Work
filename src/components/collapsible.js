@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Promise from "promise-polyfill";
+import Promise from "../js/promise";
 
 const deriveTransition = duration => `height ${duration}ms ease-out`;
 
