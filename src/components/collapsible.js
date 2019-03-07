@@ -177,7 +177,13 @@ class Collapsible extends Component {
   });
 
   render() {
-    const { style, collapsed, duration, ...rest } = this.props;
+    const {
+      unmountOnCollapse,
+      style,
+      collapsed,
+      duration,
+      ...rest
+    } = this.props;
 
     // if (this.state.display === "none") return null;
 
